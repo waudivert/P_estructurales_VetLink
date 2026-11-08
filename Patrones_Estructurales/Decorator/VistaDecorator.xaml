@@ -1,0 +1,33 @@
+<UserControl x:Class="Patrones_Estructurales.Decorator.VistaDecorator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinWidth="350">
+    <Grid>
+        <Border Style="{StaticResource CardStyle}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock Text="Decorator"
+                           FontSize="24"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource ColorPrimario}"/>
+                <TextBlock Text="Espacio preparado para el ejercicio del equipo."
+                           Margin="0,12,0,0"
+                           FontSize="14"
+                           Foreground="{StaticResource TextoClaro}"/>
+                <Border Background="{StaticResource InputColor}"
+                        BorderBrush="{StaticResource BordesSuaves}"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Padding="24"
+                        Margin="0,22,0,0"
+                        MinHeight="190">
+                    <TextBlock Text="Sin ejemplo implementado todavía."
+                               Foreground="{StaticResource TextoClaro}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
