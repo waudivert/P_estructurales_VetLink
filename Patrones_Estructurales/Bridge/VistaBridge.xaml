@@ -1,33 +1,233 @@
-<UserControl x:Class="Patrones_Estructurales.Bridge.VistaBridge"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             MinWidth="350">
-    <Grid>
-        <Border Style="{StaticResource CardStyle}"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top">
+<UserControl
+    x:Class="Patrones_Estructurales.Bridge.VistaBridge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinWidth="360">
+
+    <UserControl.Resources>
+
+        <SolidColorBrush
+            x:Key="VerdePrincipal"
+            Color="#246B50"/>
+
+        <SolidColorBrush
+            x:Key="VerdeSuave"
+            Color="#E5F2E9"/>
+
+        <!-- Botones redondeados -->
+        <Style
+            x:Key="BotonVerde"
+            TargetType="Button">
+
+            <Setter
+                Property="Background"
+                Value="{StaticResource VerdePrincipal}"/>
+
+            <Setter
+                Property="Foreground"
+                Value="White"/>
+
+            <Setter
+                Property="BorderThickness"
+                Value="0"/>
+
+            <Setter
+                Property="Height"
+                Value="44"/>
+
+            <Setter
+                Property="Cursor"
+                Value="Hand"/>
+
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+    </UserControl.Resources>
+
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto">
+
+        <Border
+            Background="White"
+            CornerRadius="16"
+            Padding="25"
+            Margin="10">
+
             <StackPanel>
-                <TextBlock Text="Bridge"
-                           FontSize="24"
-                           FontWeight="SemiBold"
-                           Foreground="{StaticResource ColorPrimario}"/>
-                <TextBlock Text="Espacio preparado para el ejercicio del equipo."
-                           Margin="0,12,0,0"
-                           FontSize="14"
-                           Foreground="{StaticResource TextoClaro}"/>
-                <Border Background="{StaticResource InputColor}"
-                        BorderBrush="{StaticResource BordesSuaves}"
-                        BorderThickness="1"
-                        CornerRadius="10"
-                        Padding="24"
-                        Margin="0,22,0,0"
-                        MinHeight="190">
-                    <TextBlock Text="Sin ejemplo implementado todavía."
-                               Foreground="{StaticResource TextoClaro}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+
+                <!-- Título -->
+
+                <TextBlock
+                    Text="BRIDGE"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource VerdePrincipal}"/>
+
+                <TextBlock
+                    Text="Figuras geométricas"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Foreground="#173D30"
+                    Margin="0,8,0,0"/>
+
+                <TextBlock
+                    Text="Selecciona una figura y un color para dibujarla."
+                    Foreground="#6D8077"
+                    TextWrapping="Wrap"
+                    Margin="0,8,0,22"/>
+
+                <!-- Selecciones -->
+
+                <Border
+                    Background="{StaticResource VerdeSuave}"
+                    CornerRadius="12"
+                    Padding="18">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="Tipo de figura"
+                            FontWeight="SemiBold"
+                            Margin="0,0,0,8"/>
+
+                        <ComboBox
+                            x:Name="CmbFiguras"
+                            Height="38">
+
+                            <ComboBoxItem
+                                Content="Círculo"/>
+
+                            <ComboBoxItem
+                                Content="Rectángulo"/>
+
+                        </ComboBox>
+
+                        <TextBlock
+                            Text="Color de la figura"
+                            FontWeight="SemiBold"
+                            Margin="0,15,0,8"/>
+
+                        <ComboBox
+                            x:Name="CmbColores"
+                            Height="38">
+
+                            <ComboBoxItem
+                                Content="Rojo"/>
+
+                            <ComboBoxItem
+                                Content="Azul"/>
+
+                        </ComboBox>
+
+                        <Button
+                            Content="Dibujar figura"
+                            Style="{StaticResource BotonVerde}"
+                            Click="BtnDibujar_Click"
+                            Margin="0,20,0,0"/>
+
+                    </StackPanel>
                 </Border>
+
+                <!-- Área de dibujo -->
+
+                <Border
+                    Background="#F4F8F2"
+                    BorderBrush="#D6E6DB"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="20"
+                    Margin="0,20,0,0">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="Vista previa"
+                            FontSize="17"
+                            FontWeight="SemiBold"
+                            Foreground="#173D30"/>
+
+                        <Canvas
+                            x:Name="Lienzo"
+                            Height="230"
+                            Background="Transparent"
+                            ClipToBounds="True"
+                            Margin="0,15,0,0">
+
+                            <TextBlock
+                                x:Name="TxtVacio"
+                                Text="La figura aparecerá aquí"
+                                Foreground="#82938A"
+                                FontSize="15"
+                                Canvas.Left="35"
+                                Canvas.Top="100"/>
+
+                        </Canvas>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- Resultado -->
+
+                <Border
+                    Background="{StaticResource VerdeSuave}"
+                    CornerRadius="10"
+                    Padding="15"
+                    Margin="0,18,0,0">
+
+                    <TextBlock
+                        x:Name="TxtResultado"
+                        Text="Selecciona las opciones y presiona Dibujar figura."
+                        Foreground="{StaticResource VerdePrincipal}"
+                        TextWrapping="Wrap"/>
+
+                </Border>
+
+                <!-- Explicación -->
+
+                <Border
+                    Background="#F4F8F2"
+                    CornerRadius="10"
+                    Padding="16"
+                    Margin="0,22,0,0">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="¿Qué demuestra Bridge?"
+                            FontWeight="Bold"
+                            Foreground="#173D30"/>
+
+                        <TextBlock
+                            Text="Las figuras y los dibujadores funcionan independientemente. El mismo círculo o rectángulo puede utilizar cualquier implementación de color."
+                            TextWrapping="Wrap"
+                            Foreground="#65766C"
+                            Margin="0,8,0,0"/>
+
+                    </StackPanel>
+                </Border>
+
             </StackPanel>
         </Border>
-    </Grid>
+    </ScrollViewer>
 </UserControl>
