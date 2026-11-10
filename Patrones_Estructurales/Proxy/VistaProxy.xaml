@@ -2,32 +2,85 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              MinWidth="350">
-    <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Border Style="{StaticResource CardStyle}"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top">
+                Margin="0,0,10,10">
             <StackPanel>
-                <TextBlock Text="Proxy"
+                <TextBlock Text="PROXY"
+                           FontSize="13"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource ColorPrimario}"/>
+                <TextBlock Text="Consulta del clima con caché"
                            FontSize="24"
                            FontWeight="SemiBold"
-                           Foreground="{StaticResource ColorPrimario}"/>
-                <TextBlock Text="Espacio preparado para el ejercicio del equipo."
-                           Margin="0,12,0,0"
-                           FontSize="14"
+                           Margin="0,8,0,0"
+                           Foreground="{StaticResource TextoOscuro}"/>
+                <TextBlock Text="La primera consulta de una ciudad tarda; las siguientes las responde el proxy al instante."
+                           TextWrapping="Wrap"
+                           Margin="0,8,0,20"
                            Foreground="{StaticResource TextoClaro}"/>
+
                 <Border Background="{StaticResource InputColor}"
-                        BorderBrush="{StaticResource BordesSuaves}"
-                        BorderThickness="1"
+                        CornerRadius="12"
+                        Padding="18">
+                    <StackPanel>
+                        <TextBlock Text="Ciudad"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,8"/>
+                        <ComboBox x:Name="CmbCiudad"
+                                  Height="38"
+                                  FontSize="14"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Lima"/>
+                            <ComboBoxItem Content="Madrid"/>
+                            <ComboBoxItem Content="Tokio"/>
+                        </ComboBox>
+
+                        <Button x:Name="BtnConsultar"
+                                Content="Consultar clima"
+                                Click="BtnConsultar_Click"
+                                Background="{StaticResource ColorPrimario}"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Height="42"
+                                Cursor="Hand"
+                                Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource PrimarioSuave}"
                         CornerRadius="10"
-                        Padding="24"
-                        Margin="0,22,0,0"
-                        MinHeight="190">
-                    <TextBlock Text="Sin ejemplo implementado todavía."
-                               Foreground="{StaticResource TextoClaro}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                        Padding="14"
+                        Margin="0,20,0,0">
+                    <StackPanel>
+                        <TextBlock x:Name="TxtResultado"
+                                   Text="Elige una ciudad y presiona Consultar clima."
+                                   FontSize="15"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource ColorPrimario}"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="TxtOrigen"
+                                   Margin="0,6,0,0"
+                                   Foreground="{StaticResource TextoClaro}"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource InputColor}"
+                        CornerRadius="10"
+                        Padding="16"
+                        Margin="0,24,0,0">
+                    <StackPanel>
+                        <TextBlock Text="¿Qué demuestra este patrón?"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextoOscuro}"/>
+                        <TextBlock Text="Proxy tiene la misma interfaz que el servicio real y se pone delante de él: guarda las respuestas y evita repetir consultas lentas."
+                                   TextWrapping="Wrap"
+                                   Margin="0,8,0,0"
+                                   Foreground="{StaticResource TextoClaro}"/>
+                    </StackPanel>
                 </Border>
             </StackPanel>
         </Border>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

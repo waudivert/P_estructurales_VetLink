@@ -1,8 +1,8 @@
 # Proxy
 
-Este apartado se dejó sin ejemplos para implementar un ejercicio propio.
+Ejemplo sencillo: consulta del clima con caché.
 
-- Vista: `VistaProxy.xaml`
-- Código de la vista: `VistaProxy.xaml.cs`
-- Crear aquí las clases e interfaces del patrón cuando el equipo defina su ejemplo.
-- Mantener el `namespace Patrones_Estructurales.Proxy` o ajustar los imports.
+- `IServicioClima`: interfaz común (Subject).
+- `ServicioClimaReal`: servicio lento que simula una consulta a internet (RealSubject).
+- `ServicioClimaProxy`: guarda las respuestas y no vuelve a llamar al servicio real para la misma ciudad (Proxy).
+- `VistaProxy.xaml`: vista para probar el ejemplo; muestra si la respuesta vino del servicio real o de la caché.
