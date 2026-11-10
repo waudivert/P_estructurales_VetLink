@@ -1,33 +1,149 @@
-<UserControl x:Class="Patrones_Estructurales.Decorator.VistaDecorator"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             MinWidth="350">
-    <Grid>
-        <Border Style="{StaticResource CardStyle}"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top">
+<UserControl
+    x:Class="Patrones_Estructurales.Decorator.VistaDecorator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinWidth="360">
+
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto"
+        Background="#F4F8F5">
+
+        <Border
+            Background="White"
+            CornerRadius="15"
+            Margin="25"
+            Padding="25">
+
             <StackPanel>
-                <TextBlock Text="Decorator"
-                           FontSize="24"
-                           FontWeight="SemiBold"
-                           Foreground="{StaticResource ColorPrimario}"/>
-                <TextBlock Text="Espacio preparado para el ejercicio del equipo."
-                           Margin="0,12,0,0"
-                           FontSize="14"
-                           Foreground="{StaticResource TextoClaro}"/>
-                <Border Background="{StaticResource InputColor}"
-                        BorderBrush="{StaticResource BordesSuaves}"
-                        BorderThickness="1"
-                        CornerRadius="10"
-                        Padding="24"
-                        Margin="0,22,0,0"
-                        MinHeight="190">
-                    <TextBlock Text="Sin ejemplo implementado todavía."
-                               Foreground="{StaticResource TextoClaro}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+
+                <!-- Título -->
+                <TextBlock
+                    Text="DECORATOR"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Foreground="#267453"/>
+
+                <TextBlock
+                    Text="Personaliza tu café"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Foreground="#173D30"
+                    Margin="0,8,0,10"/>
+
+                <TextBlock
+                    Text="Agrega ingredientes sin modificar el café original."
+                    TextWrapping="Wrap"
+                    Foreground="#66776D"
+                    Margin="0,0,0,20"/>
+
+                <!-- Opciones -->
+                <Border
+                    Background="#E5F2E9"
+                    CornerRadius="12"
+                    Padding="20">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="Café básico - Bs 10"
+                            FontSize="17"
+                            FontWeight="SemiBold"
+                            Foreground="#173D30"
+                            Margin="0,0,0,18"/>
+
+                        <CheckBox
+                            x:Name="ChkLeche"
+                            Content="Agregar leche (+ Bs 3)"
+                            FontSize="15"
+                            Margin="0,0,0,15"/>
+
+                        <CheckBox
+                            x:Name="ChkChocolate"
+                            Content="Agregar chocolate (+ Bs 5)"
+                            FontSize="15"/>
+
+                        <Button
+                            Content="Preparar café"
+                            Height="42"
+                            Margin="0,20,0,0"
+                            Background="#267453"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"
+                            Click="BtnPreparar_Click"/>
+
+                    </StackPanel>
+
                 </Border>
+
+                <!-- Resultado -->
+                <Border
+                    Background="#F4F8F2"
+                    BorderBrush="#D6E6DB"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="20"
+                    Margin="0,20,0,0">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="BEBIDA PREPARADA"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Foreground="#267453"/>
+
+                        <TextBlock
+                            x:Name="TxtDescripcion"
+                            Text="Aún no se ha preparado ningún café."
+                            FontSize="17"
+                            FontWeight="SemiBold"
+                            TextWrapping="Wrap"
+                            Foreground="#173D30"
+                            Margin="0,12,0,18"/>
+
+                        <TextBlock
+                            Text="PRECIO TOTAL"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Foreground="#267453"/>
+
+                        <TextBlock
+                            x:Name="TxtPrecio"
+                            Text="Bs 0.00"
+                            FontSize="32"
+                            FontWeight="Bold"
+                            Foreground="#173D30"
+                            Margin="0,8,0,0"/>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- Explicación -->
+                <Border
+                    Background="#E5F2E9"
+                    CornerRadius="10"
+                    Padding="16"
+                    Margin="0,20,0,0">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="¿Qué demuestra Decorator?"
+                            FontWeight="Bold"
+                            Foreground="#173D30"/>
+
+                        <TextBlock
+                            Text="Los ingredientes agregan nuevas características y costos al café sin modificar su clase original. Los decoradores pueden combinarse."
+                            TextWrapping="Wrap"
+                            Foreground="#65766C"
+                            Margin="0,8,0,0"/>
+
+                    </StackPanel>
+                </Border>
+
             </StackPanel>
         </Border>
-    </Grid>
+    </ScrollViewer>
 </UserControl>
