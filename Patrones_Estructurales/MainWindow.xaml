@@ -37,6 +37,9 @@
                 <Button Content="Decorator"
                         Style="{StaticResource MenuButtonStyle}"
                         Click="BtnDecorator_Click"/>
+                <Button Content="Facade"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Click="BtnFacade_Click"/>
                 <Button Content="Proxy"
                         Style="{StaticResource MenuButtonStyle}"
                         Click="BtnProxy_Click"/>

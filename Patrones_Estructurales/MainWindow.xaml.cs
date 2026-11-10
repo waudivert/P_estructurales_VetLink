@@ -43,6 +43,11 @@ namespace Patrones_Estructurales
             ContenedorContenido.Content = new Decorator.VistaDecorator();
         }
 
+        private void BtnFacade_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Facade.VistaFacade();
+        }
+
         private void BtnProxy_Click(object sender, RoutedEventArgs e)
         {
             ContenedorContenido.Content = new Proxy.VistaProxy();

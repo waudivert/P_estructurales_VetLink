@@ -1,0 +1,151 @@
+<UserControl x:Class="Patrones_Estructurales.Facade.VistaFacade"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinWidth="350">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Style="{StaticResource CardStyle}"
+                Margin="0,0,10,10">
+            <StackPanel>
+                <TextBlock Text="FACADE"
+                           FontSize="13"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource ColorPrimario}"/>
+                <TextBlock Text="Sesion y Granjas sobre Supabase"
+                           FontSize="24"
+                           FontWeight="SemiBold"
+                           Margin="0,8,0,0"
+                           Foreground="{StaticResource TextoOscuro}"/>
+                <TextBlock Text="Las pantallas no hablan con Supabase: todo pasa por las fachadas Sesion y Granjas."
+                           TextWrapping="Wrap"
+                           Margin="0,8,0,20"
+                           Foreground="{StaticResource TextoClaro}"/>
+
+                <!-- Login -->
+                <Border x:Name="PanelLogin"
+                        Background="{StaticResource InputColor}"
+                        CornerRadius="12"
+                        Padding="18">
+                    <StackPanel>
+                        <TextBlock Text="Login"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,14"
+                                   Foreground="{StaticResource TextoOscuro}"/>
+
+                        <TextBlock Text="Correo"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,8"/>
+                        <TextBox x:Name="TxtCorreo"
+                                 Height="38"
+                                 FontSize="14"
+                                 VerticalContentAlignment="Center"/>
+
+                        <TextBlock Text="Clave"
+                                   FontWeight="SemiBold"
+                                   Margin="0,15,0,8"/>
+                        <PasswordBox x:Name="TxtClave"
+                                     Height="38"
+                                     FontSize="14"
+                                     VerticalContentAlignment="Center"/>
+
+                        <Button x:Name="BtnIniciar"
+                                Content="Iniciar sesión"
+                                Click="BtnIniciar_Click"
+                                Background="{StaticResource ColorPrimario}"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Height="42"
+                                Cursor="Hand"
+                                Margin="0,15,0,0"/>
+
+                        <TextBlock x:Name="TxtMensaje"
+                                   Margin="0,12,0,0"
+                                   Foreground="#B3261E"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Mi granja -->
+                <StackPanel x:Name="PanelGranja"
+                            Visibility="Collapsed">
+                    <Border Background="{StaticResource PrimarioSuave}"
+                            CornerRadius="10"
+                            Padding="14">
+                        <TextBlock x:Name="TxtBienvenida"
+                                   Foreground="{StaticResource ColorPrimario}"
+                                   FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                    </Border>
+
+                    <TextBlock Text="Mi granja"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               Margin="0,20,0,10"
+                               Foreground="{StaticResource TextoOscuro}"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                                BorderBrush="{StaticResource BordesSuaves}"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="Animales activos"
+                                           Foreground="{StaticResource TextoClaro}"/>
+                                <TextBlock x:Name="TxtAnimales"
+                                           Text="—"
+                                           FontSize="28"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource ColorPrimario}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="2"
+                                BorderBrush="{StaticResource BordesSuaves}"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="Avisos (7 días)"
+                                           Foreground="{StaticResource TextoClaro}"/>
+                                <TextBlock x:Name="TxtAvisos"
+                                           Text="—"
+                                           FontSize="28"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource ColorPrimario}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="4"
+                                BorderBrush="{StaticResource BordesSuaves}"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="Miembros"
+                                           Foreground="{StaticResource TextoClaro}"/>
+                                <TextBlock x:Name="TxtMiembros"
+                                           Text="—"
+                                           FontSize="28"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource ColorPrimario}"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock x:Name="TxtTiempo"
+                               Margin="0,10,0,0"
+                               Foreground="{StaticResource TextoClaro}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</UserControl>
