@@ -2,32 +2,112 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              MinWidth="350">
-    <Grid>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Border Style="{StaticResource CardStyle}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Top">
             <StackPanel>
-                <TextBlock Text="Flyweight"
+
+                <TextBlock Text="Flyweight - Bosque virtual"
                            FontSize="24"
                            FontWeight="SemiBold"
                            Foreground="{StaticResource ColorPrimario}"/>
-                <TextBlock Text="Espacio preparado para el ejercicio del equipo."
-                           Margin="0,12,0,0"
-                           FontSize="14"
+
+                <TextBlock Text="Demostración de reutilización de objetos en memoria."
+                           Margin="0,8,0,18"
                            Foreground="{StaticResource TextoClaro}"/>
-                <Border Background="{StaticResource InputColor}"
-                        BorderBrush="{StaticResource BordesSuaves}"
+
+                <WrapPanel Margin="0,0,0,16">
+                    <Button Content="Generar 5 árboles"
+                            Click="BtnCinco_Click"
+                            Padding="16,10"
+                            Margin="0,0,10,8"
+                            Background="#246B52"
+                            Foreground="White"/>
+
+                    <Button Content="Generar 100 árboles"
+                            Click="BtnCien_Click"
+                            Padding="16,10"
+                            Margin="0,0,10,8"
+                            Background="#246B52"
+                            Foreground="White"/>
+
+                    <Button Content="Limpiar"
+                            Click="BtnLimpiar_Click"
+                            Padding="16,10"
+                            Margin="0,0,10,8"/>
+                </WrapPanel>
+
+                <Border Background="#E6F3E8"
+                        CornerRadius="10"
+                        Padding="15"
+                        Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="Resultados del patrón"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"
+                                   Foreground="#205B44"/>
+
+                        <WrapPanel Margin="0,12,0,0">
+                            <StackPanel Margin="0,0,35,10">
+                                <TextBlock Text="Árboles"
+                                           Foreground="#52665A"/>
+                                <TextBlock x:Name="TxtArboles"
+                                           Text="0"
+                                           FontSize="28"
+                                           FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,0,35,10">
+                                <TextBlock Text="Tipos compartidos"
+                                           Foreground="#52665A"/>
+                                <TextBlock x:Name="TxtTipos"
+                                           Text="0"
+                                           FontSize="28"
+                                           FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,0,10,10">
+                                <TextBlock Text="Reutilización"
+                                           Foreground="#52665A"/>
+                                <TextBlock x:Name="TxtReutilizacion"
+                                           Text="Sin datos"
+                                           FontSize="17"
+                                           FontWeight="Bold"
+                                           Foreground="#246B52"/>
+                            </StackPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="Bosque generado"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,10"
+                           Foreground="#205B44"/>
+
+                <Border Background="#D9EFD2"
+                        BorderBrush="#B3D3B4"
                         BorderThickness="1"
                         CornerRadius="10"
-                        Padding="24"
-                        Margin="0,22,0,0"
-                        MinHeight="190">
-                    <TextBlock Text="Sin ejemplo implementado todavía."
-                               Foreground="{StaticResource TextoClaro}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                        Padding="8">
+                    <Viewbox Stretch="Uniform">
+                        <Canvas x:Name="BosqueCanvas"
+                                Width="750"
+                                Height="340"
+                                Background="#D9EFD2"/>
+                    </Viewbox>
                 </Border>
+
+                <TextBlock x:Name="TxtExplicacion"
+                           Text="Presiona un botón para generar el bosque."
+                           TextWrapping="Wrap"
+                           Margin="0,15,0,0"
+                           Foreground="#52665A"
+                           FontSize="14"/>
+
             </StackPanel>
         </Border>
-    </Grid>
+    </ScrollViewer>
 </UserControl>
